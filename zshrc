@@ -79,6 +79,11 @@ export EDITOR='vim'
 #
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
+alias vimconfig="vim ~/.vimrc"
+alias tmuxconfig="vim ~/.tmux.conf"
+
+alias todo="vim ~/Dropbox/Apps/Editorial/todo.taskpaper"
+
 # alias ll="ls -lhA"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
