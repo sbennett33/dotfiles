@@ -1,7 +1,9 @@
+set nocompatible
+
 set term=screen-256color
 
 " Leader
-let mapleader = ","
+let mapleader = " "
 
 " Avoid Esc Key
 inoremap jj <Esc>
@@ -14,10 +16,10 @@ set mouse=a
 set ttymouse=xterm2
 
 " Show relative line numbers
-:set relativenumber
+set relativenumber
 
 " Highlight column 80
-set colorcolumn=80
+" set colorcolumn=80
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -38,26 +40,12 @@ imap <C-Return> <CR><CR><C-o>k<S-s>
 autocmd VimResized * :wincmd =
 
 " zoom a vim pane, <C-w>= to re-balance
-nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>+ :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 
 " Toggle paste mode
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
-set showmode
-
-" Vim Test
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-
-" make test commands execute using dispatch.vim
-let test#strategy = "vtr"
-
-" close test window
-nnoremap <leader>kr :VtrKillRunner<CR>
-
-" focus the test window
-nnoremap <leader>j :VtrFocusRunner<CR>
 
 " FZF Search
 map <Leader>f :Files<CR>
@@ -77,15 +65,15 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'christoomey/vim-tmux-runner'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'mattn/emmet-vim'
-Plug 'janko-m/vim-test'
+Plug 'vim-scripts/AutoComplPop'
 
 Plug 'tpope/vim-endwise'
 
@@ -97,35 +85,46 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'pangloss/vim-javascript'
 Plug 'slashmili/alchemist.vim'
 
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
-
 Plug 'vimwiki/vimwiki'
- 
+
+Plug 'ludovicchabant/vim-gutentags'
+
+Plug 'morhetz/gruvbox'
+
 call plug#end()
 
 filetype plugin indent on
 
-" Rename files
-function! RenameFile()
-	let old_name = expand('%')
-	let new_name = input('New file name: ', expand('%'), 'file')
-	if new_name != '' && new_name != old_name
-		exec ':saveas ' . new_name
-		exec ':silent !rm ' . old_name
-		redraw!
-	endif
+" Hide status bar
+let s:hidden_all = 0
+function! ToggleHiddenAll()
+    if s:hidden_all  == 0
+        let s:hidden_all = 1
+        set noshowmode
+        set noruler
+        set laststatus=0
+        set noshowcmd
+    else
+        let s:hidden_all = 0
+        set showmode
+        set ruler
+        set laststatus=2
+        set showcmd
+    endif
 endfunction
-map <leader>r :call RenameFile()<cr>
+nnoremap <S-h> :call ToggleHiddenAll()<CR>
+
+colorscheme gruvbox
+
+" hi modemsg ctermfg=8 ctermbg=none cterm=none
+" hi statusline ctermfg=10 ctermbg=none cterm=none
+" hi statuslinenc ctermfg=8 ctermbg=none cterm=none
+
+set fillchars+=vert:\ 
 
 " Set statusline
-:set statusline=%f         " Path to the file
-:set statusline+=\ -\      " Separator
-:set statusline+=FileType: " Label
-:set statusline+=%y        " Filetype of the file
-:set statusline+=\ -\    " Separator
-:set statusline+=%l    " Current line
-:set statusline+=/    " Separator
-:set statusline+=%L   " Total lines
-:set statusline+=\ -\    " Separator
-:set statusline+=%{fugitive#statusline()} " Current git branch
+set statusline=%=          " align left
+set statusline+=%t         " filename
+set statusline+=%m         " modified flag
+set statusline+=%10(%l,%c%)\            " line and column
+set statusline+=%P                        " percentage of file

@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/dev/sbennett33/dotfiles/bin:$PATH
+export PATH=/usr/local/opt/python/libexec/bin:$PATH
+export PATH=/Users/scott/Library/Python/3.6/lib/python/site-packages:$PATH
+export PATH=/Users/scott/dev/flutter/flutter/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/scott/.oh-my-zsh
@@ -8,7 +11,7 @@ export ZSH=/Users/scott/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -52,11 +55,14 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rails ruby osx)
+plugins=(git git-flow osx elixir asdf)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+autoload -U promptinit; promptinit
+prompt pure
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -64,7 +70,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -78,14 +84,20 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+
+alias vim=nvim
+
 alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
+alias vimconfig="vim ~/.config/nvim/init.vim"
 alias tmuxconfig="vim ~/.tmux.conf"
 
-alias todo="vim ~/Dropbox/Apps/Editorial/todo.taskpaper"
+alias hgrep="history | grep"
 
-# alias ll="ls -lhA"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias fixpsql="rm /usr/local/var/postgres/postmaster.pid"
+
+alias spotlight="sudo mdutil -E /"
+
+alias ls="exa -lhga --git"
 
 # Always start with tmux session
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
@@ -98,6 +110,20 @@ ensure_tmux_is_running() {
 
 ensure_tmux_is_running
 
+source ~/dev/ReelCoaches/fantag_platform/.env
 eval "$(rbenv init -)"
 
+eval "$(hub alias -s)"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# [[ -s "/Users/scott/.gvm/scripts/gvm" ]] && source "/Users/scott/.gvm/scripts/gvm"
+# export GOPATH=/users/scott/dev/go
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export PGDATABASE=fantag_dev
+
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+source /usr/local/bin/aws_zsh_completer.sh
+source ~/.google-cloud-sdk/completion.zsh.inc
+source ~/.google-cloud-sdk/path.zsh.inc
