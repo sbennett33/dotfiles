@@ -2,7 +2,7 @@
 
 echo "Setting up your dev environment..."
 
-apt-get install -y zsh
+apt-get install -y zsh apt-utils
 echo zsh --version
 chsh -s $(which zsh)
 
