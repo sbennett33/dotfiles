@@ -1,0 +1,3 @@
+[submodule "plugins/elixir"]
+	path = plugins/elixir
+	url = https://github.com/gusaiani/elixir-oh-my-zsh.git
