@@ -8,6 +8,12 @@ apt-get install -y zsh apt-utils vim
 rm -rf $HOME/.zshrc
 ln -s $HOME/dotfiles/.zshrc $HOME/.zshrc
 
+
+apt-get update && \
+    apt-get -y upgrade && \
+    apt-get -y install build-essential musl inotify-tools && \
+    apt-get -y install tcl-dev gettext libcurl4-openssl-dev libssl-dev
+
 wget https://github.com/git/git/archive/v2.24.3.tar.gz
 tar -zxf v2.24.3.tar.gz
 cd git-2.24.3 && \
