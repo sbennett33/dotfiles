@@ -1,5 +1,5 @@
-export PATH="/Users/sbennett/bin:$PATH"
-export PATH=$PATH:/Users/sbennett/Library/Python/3.11/bin
+export PATH="$HOME/bin:$PATH"
+export PATH=$PATH:$HOME/Library/Python/3.11/bin
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
@@ -17,15 +17,15 @@ alias drs='doppler run -- iex -S mix phx.server'
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
 
+# usage:
+# dop mix test
+# dop iex -S mix phx.server
+# dop mix format
 function dop() {
   cmd="$*"
   eval "doppler run --command \"$cmd\""
 }
 
-# usage:
-# dop mix test
-# dop iex -S mix phx.server
-# dop mix format
 
 setopt autocd
 
