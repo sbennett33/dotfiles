@@ -10,6 +10,7 @@ alias gst="git status"
 alias gco='git checkout'
 alias gcb='git checkout -B'
 alias gl='git pull'
+alias gp='git push'
 alias gci='git_checkout_issue.sh'
 
 alias drs='doppler run -- iex -S mix phx.server'
