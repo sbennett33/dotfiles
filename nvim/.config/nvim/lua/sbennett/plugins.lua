@@ -108,5 +108,22 @@ require("lazy").setup({
   },
   {
     'alexghergh/nvim-tmux-navigation'
+  },
+  { 'pocco81/auto-save.nvim' },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = true
+  },
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = true
   }
 })
