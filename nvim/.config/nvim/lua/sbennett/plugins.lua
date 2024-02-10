@@ -109,7 +109,8 @@ require("lazy").setup({
   {
     'alexghergh/nvim-tmux-navigation'
   },
-  { 'pocco81/auto-save.nvim' },
+  { 
+    'pocco81/auto-save.nvim' }, -- https://github.com/okuuva/auto-save.nvim
   {
     "folke/noice.nvim",
     event = "VeryLazy",
