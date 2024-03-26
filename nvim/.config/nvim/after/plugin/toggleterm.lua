@@ -24,14 +24,10 @@ local lazygit  = Terminal:new({
     vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", { noremap = true, silent = true })
   end,
   -- function to run on closing the terminal
-  on_close = function(term)
+  on_close = function(_)
     vim.cmd("startinsert!")
   end,
 })
 
-function _lazygit_toggle()
-  lazygit:toggle()
-end
-
-vim.api.nvim_set_keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>v", "<cmd>ToggleTerm<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>gg", function() lazygit:toggle() end, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>v", "<cmd>silent !tmux split-window -v -l 10<CR>", { noremap = true, silent = true })

@@ -18,6 +18,8 @@ alias drs='doppler run -- iex -S mix phx.server'
 bindkey "^A" vi-beginning-of-line
 bindkey "^E" vi-end-of-line
 
+bindkey '^R' history-incremental-pattern-search-backward
+
 # usage:
 # dop mix test
 # dop iex -S mix phx.server
@@ -27,10 +29,13 @@ function dop() {
   eval "doppler run --command \"$cmd\""
 }
 
-
 setopt autocd
 
+autoload -U compinit
+compinit
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(zoxide init zsh)"
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 

@@ -1,6 +1,6 @@
 local lsp = require('lsp-zero').preset({})
 
-lsp.on_attach(function(_client, bufnr)
+lsp.on_attach(function(_, bufnr)
   lsp.default_keymaps({ buffer = bufnr })
 
   vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
@@ -16,12 +16,6 @@ require("luasnip.loaders.from_vscode").lazy_load()
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
-
-local has_words_before = function()
-  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
-end
 
 cmp.setup({
   snippet = {

@@ -27,3 +27,7 @@ vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 250
 vim.opt.clipboard:append { "unnamedplus" }
+
+vim.opt.shell = "zsh"
+
+vim.opt.conceallevel = 1

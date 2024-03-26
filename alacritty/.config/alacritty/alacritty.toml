@@ -1,3 +1,5 @@
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
 [font.normal]
 family = "FiraCode Nerd Font"
 
@@ -6,6 +8,7 @@ size = 16
 
 [window]
 decorations = "none"
+option_as_alt = "OnlyLeft"
 
 [window.padding]
 x = 10

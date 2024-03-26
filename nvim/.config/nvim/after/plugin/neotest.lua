@@ -6,6 +6,10 @@ require("neotest").setup({
       end
     })
   },
+  quickfix = {
+    enabled = false,
+    open = false
+  },
 })
 
 vim.keymap.set('n', '<leader>tn', '<cmd>lua require("neotest").run.run()<cr>', {})

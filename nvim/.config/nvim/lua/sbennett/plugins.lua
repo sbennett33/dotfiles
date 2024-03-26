@@ -56,7 +56,7 @@ require("lazy").setup({
   { 'akinsho/toggleterm.nvim', version = "*", config = true },
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
+    tag = '0.1.6',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
   { "windwp/nvim-autopairs",  config = true },
@@ -109,8 +109,6 @@ require("lazy").setup({
   {
     'alexghergh/nvim-tmux-navigation'
   },
-  { 
-    'pocco81/auto-save.nvim' }, -- https://github.com/okuuva/auto-save.nvim
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -126,5 +124,25 @@ require("lazy").setup({
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = true
-  }
+  },
+  { "catppuccin/nvim",                name = "catppuccin", priority = 1000 },
+  {
+    "epwalsh/obsidian.nvim",
+    version = "*",
+    lazy = true,
+    ft = "markdown",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      workspaces = {
+        {
+          name = "personal",
+          path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault",
+        },
+      },
+    },
+  },
+  { "bullets-vim/bullets.vim" },
+  { "HiPhish/rainbow-delimiters.nvim" }
 })

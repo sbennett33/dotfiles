@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-opts = { noremap = true, silent = true }
+local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<leader>\\", vim.cmd.vsplit, opts)
 vim.keymap.set("n", "<leader>-", vim.cmd.split, opts)
