@@ -30,4 +30,4 @@ local lazygit  = Terminal:new({
 })
 
 vim.keymap.set("n", "<leader>gg", function() lazygit:toggle() end, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>v", "<cmd>silent !tmux split-window -v -l 10<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>v", "<cmd>silent !tmux split-window -v -l 15<CR>", { noremap = true, silent = true })

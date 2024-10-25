@@ -16,7 +16,7 @@ vim.keymap.set("n", "q", vim.cmd.Bdelete)
 
 vim.keymap.set("n", "<leader>n", vim.cmd.cnext)
 
-vim.keymap.set("n", "<leader>xx", vim.cmd.TroubleToggle)
+-- vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
 
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts)

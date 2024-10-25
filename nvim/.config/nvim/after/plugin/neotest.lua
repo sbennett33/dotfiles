@@ -2,7 +2,7 @@ require("neotest").setup({
   adapters = {
     require("neotest-elixir")({
       post_process_command = function(cmd)
-        return vim.tbl_flatten({ { "doppler", "run", "--" }, cmd })
+        return vim.iter({ { "doppler", "run", "--" }, cmd }):flatten():totable()
       end
     })
   },

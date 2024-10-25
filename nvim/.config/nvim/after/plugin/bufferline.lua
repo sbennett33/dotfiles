@@ -5,7 +5,7 @@ require("bufferline").setup {
     offsets = { { filetype = "NvimTree", text = "Explorer", padding = 1 } },
     separator_style = "thin",            -- | "thick" | "thin" | { 'any', 'any' },
     diagnostics = "nvim_lsp",
-    custom_filter = function(buf, buf_nums)
+    custom_filter = function(buf, _)
       return vim.fn.bufname(buf) ~= ""
     end,
   },

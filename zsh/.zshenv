@@ -10,5 +10,5 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 export EDITOR="nvim"
 export VISUAL="code -n"
 export TERMINAL="alacritty"
-export BROWSER="safari"
+export BROWSER="open"
 export PAGER="less"
