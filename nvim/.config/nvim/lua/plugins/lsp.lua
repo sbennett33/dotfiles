@@ -1,0 +1,26 @@
+return {
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = function(_, opts)
+  --     local lspconfig = require("lspconfig")
+  --     local configs = require("lspconfig.configs")
+  --
+  --     -- Define the Expert server only once
+  --     if not configs.expert then
+  --       configs.expert = {
+  --         default_config = {
+  --           -- cmd = { vim.fn.stdpath("data") .. "/mason/bin/expert" },
+  --           cmd = { "/Users/scott/bin/expert_darwin_arm64" },
+  --           filetypes = { "elixir", "eelixir", "heex", "surface" },
+  --           root_dir = lspconfig.util.root_pattern("mix.exs", ".git"),
+  --           single_file_support = true,
+  --         },
+  --       }
+  --     end
+  --
+  --     -- Tell LazyVim to start it
+  --     opts.servers = opts.servers or {}
+  --     opts.servers.expert = {}
+  --   end,
+  -- },
+}

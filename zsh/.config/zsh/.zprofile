@@ -1,53 +1,21 @@
 export PATH="$HOME/bin:$PATH"
-export PATH=$PATH:$HOME/Library/Python/3.11/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:/Users/sbennett/.local/bin
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-source $XDG_CONFIG_HOME/zsh/.private
+# Other XDG paths
+export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 
-alias vim=nvim
-alias ls="exa --all --long --header --icons --git"
-alias gaa="git add --all"
-alias gst="git status"
-alias gco='git checkout'
-alias gcb='git checkout -B'
-alias gl='git pull'
-alias gp='git push'
-alias gci='git_checkout_issue.sh'
+# Default Apps
+export EDITOR="nvim"
+export VISUAL="code -n"
+export TERMINAL="ghostty"
+export BROWSER="open"
+export PAGER="less"
 
-alias drs='doppler run -- iex -S mix phx.server'
-alias drm='doppler run -- iex -S mix'
-
-bindkey "^A" vi-beginning-of-line
-bindkey "^E" vi-end-of-line
-
-setopt share_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups
-setopt hist_verify
-
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
-bindkey '^R' history-incremental-pattern-search-backward
-
-# usage:
-# dop mix test
-# dop iex -S mix phx.server
-# dop mix format
-function dop() {
-  cmd="$*"
-  eval "doppler run --command \"$cmd\""
-}
-
-setopt autocd
-
-autoload -U compinit
-compinit
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(zoxide init zsh)"
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
+# Added by `rbenv init` on Mon Mar 23 11:34:25 PDT 2026
+eval "$(rbenv init - --no-rehash zsh)"

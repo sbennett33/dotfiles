@@ -1,0 +1,5 @@
+font-size = 16
+theme = light:Catppuccin Mocha,dark:Catppuccin Mocha
+confirm-close-surface = false
+keybind = shift+enter=text:\x1b\r
+macos-option-as-alt = true
